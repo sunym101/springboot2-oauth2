@@ -81,8 +81,6 @@ public class ServerConfig extends AuthorizationServerConfigurerAdapter {
 
         // 使用最基本的InMemoryTokenStore生成token
         //endpoints.authenticationManager(authenticationManager).tokenStore(memoryTokenStore());
-
-
     }
 
     // 使用最基本的InMemoryTokenStore生成token
