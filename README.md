@@ -8,6 +8,7 @@
 ### 单点登录流程
 1. 先启动 oauth-server 项目，然后再启动 oauth-client 项目
 2. 输入客户端地址 http://localhost:8085/user
+   admin/123456
 ![输入图片说明](https://images.gitee.com/uploads/images/2018/0821/154239_60741723_1305332.png "屏幕截图.png")
 3. 进入到认证服务器登录页面
 ![输入图片说明](https://images.gitee.com/uploads/images/2018/0821/153604_5deffa0c_1305332.png "屏幕截图.png")
