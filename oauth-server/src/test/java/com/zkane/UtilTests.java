@@ -15,9 +15,10 @@ public class UtilTests {
 		// application.yml配置的jasypt.encryptor.password
 		encryptor.setPassword("abc123");
 		// 对root进行加密操作
-		System.out.println(encryptor.encrypt("root"));
+		String encode = encryptor.encrypt("111111");
+		System.out.println(encode);
 		// 进行解密操作
-		System.out.println(encryptor.decrypt("ddc3gpYHXk8o2a9TSXh9Yg=="));
+		System.out.println(encryptor.decrypt(encode));
 	}
 
 	/**

@@ -1,11 +1,14 @@
 package com.zkane.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.zkane.model.AuthRole;
+import com.zkane.config.MyGrantedAuthority;
 import com.zkane.model.AuthUser;
 
 public class MyUserDetails extends AuthUser implements UserDetails {
@@ -16,9 +19,13 @@ public class MyUserDetails extends AuthUser implements UserDetails {
 	}
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		AuthRole role = new AuthRole();
-		return role.getRoles();
+	public Collection<? extends GrantedAuthority> getAuthorities() {	
+		List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
+		grantedAuthorityList.add(new MyGrantedAuthority("MY_ROLE1", "MY_MENU1"));
+		grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+		grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		
+		return grantedAuthorityList;
 	}
 
 	@Override

@@ -35,15 +35,21 @@ public class MyUserDetailsService implements UserDetailsService {
 		// grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		// return new User(username, "{noop}123456", grantedAuthorityList);
 
-		// 密码在 spring-security-core-5.0.6.RELEASE-sources.jar中的org.springframework.security.authentication.dao.DaoAuthenticationProvider;		
-		// 密码匹配方法 org.springframework.security.crypto.password.DelegatingPasswordEncoder.
+		// 密码在
+		// spring-security-core-5.0.6.RELEASE-sources.jar中的org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+		// 密码匹配方法
+		// org.springframework.security.crypto.password.DelegatingPasswordEncoder.
 		// 密码的前缀为加密方法，例如：{bcrypt}$2a$10$KkBs8deMrE50KE1v9orMxuBJq6UkROYzAKsDPLo/O.I4vkef0yeMK
 		// spring会按加密方法来验证密码。
+		// 用户名密码验证通过，同时还必需要有权限。 Demo中把权限写死在MyUserDetails中了，可以自己实现从DB取权限。
 		AuthUser authUser = authUserRepository.findOneByUsername(username);
+
 		if (authUser == null) {
 			log.error("用户不存在");
 			throw new UsernameNotFoundException(String.format("User % does not exist!", username));
 		}
-		return new MyUserDetails(authUser);
+
+		MyUserDetails userDetails = new MyUserDetails(authUser);
+		return userDetails;
 	}
 }
